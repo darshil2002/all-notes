@@ -1,0 +1,23 @@
+  ngOnInit(){
+    let x=3;
+    let xyz=new Promise((resolve,reject)=>{
+      if(x==3){
+
+        resolve('fach 3 ')
+      }
+      else if(x==1){
+        reject('fach 1')
+      }
+      else {
+        reject('None')
+      }
+    })
+
+    xyz.then(res=>{
+      console.log('then code....... and the and is =>',res);
+    })
+    xyz.catch(res=>{
+      console.log('fail code =>',res);
+    })
+    
+  }
