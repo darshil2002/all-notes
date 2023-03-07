@@ -1,0 +1,21 @@
+export class AppComponent implements OnInit{
+  title = 'promiss';
+
+  myObservable =new Observable((variable)=>{
+    setTimeout(() => {
+      variable.next("1")
+    }, 1000);
+    setTimeout(() => {
+      variable.next("2")
+    }, 2000);
+    setTimeout(() => {
+      variable.next("3")
+    }, 3000);
+  })
+
+  ngOnInit(){
+    this.myObservable.subscribe((val)=>{
+      console.log(val);
+    })
+  }
+}
