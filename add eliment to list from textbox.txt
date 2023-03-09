@@ -1,0 +1,17 @@
+//html 
+
+<p>main works!</p>
+<textarea name="tx" id="tx" #tx cols="30" rows="10" ></textarea>
+<button #mybtn (click)="print()">push me</button>
+<ul #myul id="myul">
+<!-- <li>kasf</li> -->
+</ul>
+
+//ts
+
+ print(){
+    let texrarea=(document.getElementById('tx') as HTMLInputElement).value;
+    let li=document.createElement('li')
+    li.innerText=texrarea
+    document.getElementById('myul')?.appendChild(li)
+  }
