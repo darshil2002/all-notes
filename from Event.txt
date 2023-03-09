@@ -1,0 +1,22 @@
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { fromEvent } from 'rxjs';
+
+@Component({
+  selector: 'app-all',
+  templateUrl: './all.component.html',
+  styleUrls: ['./all.component.css']
+})
+export class AllComponent implements OnInit,AfterViewInit{
+  constructor (){}  
+  @ViewChild('mybtn') mybtn:ElementRef | undefined;
+  ngOnInit(): void {
+  
+  }
+  ngAfterViewInit(): void {
+    fromEvent(this.mybtn?.nativeElement,'click').subscribe(res=>{
+      console.log(res);
+     }) 
+  }
+}
+
+//import karavama dhyan rakho
