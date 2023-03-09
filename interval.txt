@@ -1,0 +1,17 @@
+export class MainComponent implements OnInit{
+  osg:any;
+  constructor(){}
+  //@ViewChild('mybtn') mybtn:ElementRef |undefined;
+  ngOnInit(): void {
+    const brd=interval(1000);
+
+    brd.subscribe(res=>{
+      console.log(res);
+      this.osg='hello i am ' +res;
+    })
+  }
+}
+
+//html 
+
+{{osg}}
