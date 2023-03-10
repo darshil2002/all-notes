@@ -1,0 +1,21 @@
+export class MainComponent implements OnInit{
+  osg:any;
+  mySubscription:any=Subscription;
+  constructor(){}
+  //@ViewChild('mybtn') mybtn:ElementRef |undefined;
+  ngOnInit(): void {
+    const brd=interval(1000);
+
+    this.mySubscription=brd.subscribe(res=>{
+      console.log(res);
+      this.osg='hello i am ' +res;
+      if(res>=5){
+        this.mySubscription.unsubscribe()
+      }
+    })
+  }
+}
+
+
+//html
+{{osg}}
