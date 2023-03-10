@@ -1,0 +1,21 @@
+import { Observable, of } from 'rxjs';
+
+export class MainComponent implements OnInit{
+  studentList=['darshil','suchit','mayank'];
+  students:Observable<string[]>=of (this.studentList);
+
+  myObj={
+    name:'darshil',
+    age:20,
+    blood:'o+'
+  }
+  myobj$:Observable<any>=of (this.myObj);
+  ngOnInit(): void {
+    this.students.subscribe((val)=>{
+      console.log(val);
+    })
+    this.myobj$.subscribe((val)=>{
+      console.log(val);
+    })
+  }
+}
