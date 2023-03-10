@@ -1,0 +1,34 @@
+import {  AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Observable, Subscription, from, fromEvent, interval, map, of, toArray } from 'rxjs';
+
+export class MainComponent implements OnInit{
+  studentList=['darshil','suchit','mayank'];
+  students:Observable<string[]>=of (this.studentList);
+  mysub:any=Subscription;
+  myObj=[
+    {name:'darshil',gen:'male'},
+    {name:'kaushal',gen:'male'},
+    {name:'rahul',gen:'male'},
+    {name:'book',gen:'boys'},
+    {name:'mouse',gen:'male'},
+  ]
+  myobj$:Observable<any>=of (this.myObj);
+  ngOnInit(): void {
+    let timer=interval(1000);
+    timer.pipe(map(timer=>timer*10)).subscribe((val)=>{
+      console.log(val);
+    })
+
+    this.mysub=timer.pipe(map(x=>x*10)).subscribe((val)=>{
+      console.log(val);
+      setTimeout(() => {
+        this.mysub.unsubscribe()
+      }, 5000);
+    })
+
+    let myObj$ = from (this.myObj)
+    myObj$.pipe(map(x=>x.name)).subscribe(res=>{
+        console.log(res)
+    })
+  }
+}
