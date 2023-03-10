@@ -1,0 +1,30 @@
+export class MainComponent implements OnInit{
+  osg:any;
+  mySubscription:any=Subscription;
+  constructor(){}
+  //@ViewChild('mybtn') mybtn:ElementRef |undefined;
+  ngOnInit(): void {
+    const brd=interval(1000);
+
+    this.mySubscription=brd.subscribe(res=>{
+      console.log(res);
+      this.osg='hello i am ' +res;
+      this.print();
+      if(res>=5){
+        this.mySubscription.unsubscribe()
+      }
+    })
+  }
+  print(){
+    let myli=document.createElement('li');
+    myli.innerText=this.osg;
+    document.getElementById('myul')?.appendChild(myli);
+    console.log('print');
+  }
+}
+
+
+//html 
+<ul #myul id="myul">
+<!-- <li>kasf</li> -->
+</ul>
