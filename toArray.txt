@@ -1,0 +1,11 @@
+export class MainComponent implements OnInit{
+  studentList=['darshil','suchit','mayank'];
+  students:Observable<string[]>=of (this.studentList);
+
+  ngOnInit(): void {
+    let a= from (this.myObj);
+    a.pipe(toArray()).subscribe((res: any)=>{
+      console.log(res);
+    })
+  }
+}
