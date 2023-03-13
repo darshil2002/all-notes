@@ -42,3 +42,6 @@ export class MainComponent implements OnInit {
     })
   }
 }	
+
+//from ahiya myObj ne direct observable banai ape 
+// pluck ni andar only ' ' no use karvano
