@@ -3,7 +3,7 @@ ngOnInit(){
 
     // async keyword badh function ne ek promise banai de and
     // then and catch banne na ans api sake without making 
-    // a saprate promise 
+    // a saprate prom
 
     async function darshil() {
       return 'darsh'
