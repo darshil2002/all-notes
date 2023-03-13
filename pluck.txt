@@ -1,0 +1,44 @@
+import {
+  Component,
+  OnInit,
+
+} from '@angular/core';
+
+
+import {
+  Observable,
+  Subscription,
+  from,
+  of,
+  toArray,
+  pluck,
+} from 'rxjs';
+
+@Component({
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css'],
+})
+
+
+export class MainComponent implements OnInit {
+
+  studentList = ['darshil', 'suchit', 'mayank'];
+  students: Observable<string[]> = of(this.studentList);
+  mysub: any = Subscription;
+
+  myObj = [
+    { name: 'darshil', gen: 'male' },
+    { name: 'kaushal', gen: 'male' },
+    { name: 'rahul', gen: 'male' },
+    { name: 'book', gen: 'boys' },
+    { name: 'mouse', gen: 'male' },
+  ];
+
+  ngOnInit(): void {
+    from(this.myObj).pipe(pluck('name'), toArray()).subscribe(res=>{
+      console.log(res);
+      
+    })
+  }
+}	
