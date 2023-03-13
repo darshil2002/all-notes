@@ -1,0 +1,63 @@
+import {
+
+  Component,
+  OnInit,
+
+} from '@angular/core';
+import {
+  Observable,
+  Subscription,
+  from,
+  of,
+  toArray,
+  pluck,
+  filter,
+} from 'rxjs';
+@Component({
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css'],
+})
+export class MainComponent implements OnInit {
+  studentList = ['darshil', 'suchit', 'mayank'];
+  data:any;
+  students: Observable<string[]> = of(this.studentList);
+  mysub: any = Subscription;
+  myObj = [
+    { name: 'darshil', gen: 'male',id:1 },
+    { name: 'kaushal', gen: 'male',id:2 },
+    { name: 'rahul', gen: 'male',id:3 },
+    { name: 'book', gen: 'boys',id:4 },
+    { name: 'mouse', gen: 'male',id:5 },
+  ];
+
+  ngOnInit(): void {
+    const source= from (this.myObj);
+    source.pipe(filter(x=>x.gen=='boys'),toArray()).subscribe((res)=>{
+      console.log(res);
+      this.data=res;
+    })
+    source.pipe(filter(x=>x.id<5),toArray()).subscribe((res)=>{
+      console.log(res);
+      this.data=res;
+    })
+    source.pipe(filter(x=>x.name.length==4),toArray()).subscribe((res)=>{
+      console.log(res);
+      this.data=res;
+    })
+  }
+}
+
+
+// html
+
+<table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+        </tr>
+         <tr *ngFor="let item of data">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+         </tr>
+    </table>s
