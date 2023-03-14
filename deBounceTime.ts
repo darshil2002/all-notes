@@ -34,3 +34,4 @@ export class MainComponent implements AfterViewInit {
 // <input type="text" name="searchedValue" id="searchedValue" #searchedValue placeholder="search here...">
 // <br><br>
 // <span>your vale is :<span>{{this.Data}}</span></span>
+//native Element nu dhyan rakho | 'keyup' | debounce time ma only time 
