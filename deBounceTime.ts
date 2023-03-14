@@ -20,7 +20,7 @@ export class MainComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const searchTerm=fromEvent<any>(this.searchedValue.nativeElement, 'keyup')
 
-    searchTerm.pipe(map(res=>res.target.value),debounceTime(1000)).subscribe(res=>{
+    searchTerm.pipe(map(res=>res.target.value),debounceTime(1000),distinctUntilChanged()).subscribe(res=>{
       this.Data=res;
       console.log(res);
     })
