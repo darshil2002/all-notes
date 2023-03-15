@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
     // })
     // )
     from(myArray).pipe(mergeMap(res=>this.getData(res))).subscribe(res=>{
+      //ahiya concatMap use kari sakay
       console.log(res);
       
       let myLi=document.createElement('li');
